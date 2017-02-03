@@ -16,43 +16,43 @@ Future versions: push into custom function and add to wp_head();
 ---
 **/
 
-		global $post, $product;
+global $post, $product;
 
-		if (is_product()) {
+if (is_product()) {
 
-			// For testing only
-			// echo '<!--// Single Product //-->';
-			
-			// get product id and price
-			$postid = get_the_ID();
-			$dlProdID = "'".'woocommerce_gpf_'.$postid."'";
-			$dlPrice = $product->get_price();
+    // For testing only
+    // echo '<!--// Single Product //-->';
+    
+    // get product id and price
+    $postid = get_the_ID();
+    $dlProdID = "'".'woocommerce_gpf_'.$postid."'";
+    $dlPrice = $product->get_price();
 
-			// FOR TESTING ONLY - echo out the results in comments - uncomment for testing
-			// echo '<!--// Product ID is ' . $postid . ' //-->';
-			// echo '<!--// Datalayer Product ID is ' . $dlProdID . ' -->';
-			// echo '<!--// Product Price is ' . $dlPrice . ' //-->';
+    // FOR TESTING ONLY - echo out the results in comments - uncomment for testing
+    // echo '<!--// Product ID is ' . $postid . ' //-->';
+    // echo '<!--// Datalayer Product ID is ' . $dlProdID . ' -->';
+    // echo '<!--// Product Price is ' . $dlPrice . ' //-->';
 
-			// Set the datalayer output
-			$output = '<script>' . "\n";
-			$output .= 'dataLayer = [{'. "\n";
-			$output .= "\t" . "'product_ids'".': ';
-			$output .= $dlProdID . ',' . "\n";
-			$output .= "\t". "'page_type'".': ';
-			$output .= "'product'" . ',' . "\n";
-			$output .= "\t" . "'total_value'".': ';
-			$output .= $dlPrice . "\n";
-			$output .= '}]'. "\n";
-			$output .= '</script>';
+    // Set the datalayer output
+    $output = '<script>' . "\n";
+    $output .= 'dataLayer = [{'. "\n";
+    $output .= "\t" . "'product_ids'".': ';
+    $output .= $dlProdID . ',' . "\n";
+    $output .= "\t". "'page_type'".': ';
+    $output .= "'product'" . ',' . "\n";
+    $output .= "\t" . "'total_value'".': ';
+    $output .= $dlPrice . "\n";
+    $output .= '}]'. "\n";
+    $output .= '</script>';
 
-            // Echo output
-            echo '<!--// DataLayer //-->';
-			echo $output;
+    // Echo output
+    echo '<!--// DataLayer //-->';
+    echo $output;
 
-		} else {
-            
-            // FOR TESTING ONLY
-			// echo '<!--// Not a Product Page //-->';
-		
-        }
-	?>
+} else {
+    
+    // FOR TESTING ONLY
+    // echo '<!--// Not a Product Page //-->';
+
+}
+?>
